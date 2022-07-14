@@ -13,7 +13,7 @@ function Header() {
     return (
         <AppBar position="static">
             <Toolbar>
-                <IconButton aria-label="home" onClick={() => navigate({ to: '/' })} >
+                <IconButton aria-label="home" onClick={() => navigate({ to: '/Mairie-Brix/' })} >
                     <HomeStyled />
 
                 </IconButton>
