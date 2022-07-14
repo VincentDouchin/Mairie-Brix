@@ -3,14 +3,14 @@ import Room from './Room'
 import FourOfour from './404'
 const routes = [
     {
-        path: '/',
+        path: '/Mairie-Brix/',
         element: <App />,
     },
     {
-        path: '/:Room',
+        path: '/Mairie-Brix/:Room',
         element: <Room />
     }, {
-        path: '/*',
+        path: '/Mairie-Brix/*',
         element: <FourOfour />
     }
 ]
