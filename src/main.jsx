@@ -2,9 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ReactLocation, Router, Outlet } from '@tanstack/react-location'
 import { Box, Container } from '@mui/material'
-import Header from './Header'
+import Header from './components/Header'
 import routes from './routes'
 import './index.css'
+import 'firebaseui/dist/firebaseui.css'
 const reactLocation = new ReactLocation()
 
 ReactDOM.createRoot(document.getElementById('root')).render(

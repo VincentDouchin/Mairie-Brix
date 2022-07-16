@@ -9,8 +9,9 @@ import { Event } from '@mui/icons-material';
 import { PickersDay } from '@mui/x-date-pickers/PickersDay';
 import dayjs from 'dayjs'
 import objectSupport from 'dayjs/plugin/objectSupport'
+import { addBooking } from '../firestore'
 dayjs.extend(objectSupport)
-import salles from './salles'
+import salles from '../salles'
 
 export default function Room() {
     // const location = new ReactLocation()
@@ -49,9 +50,11 @@ export default function Room() {
                         </DialogContentText>
 
                         <Button onClick={() => {
-                            salle.bookings.push({ date: { y: selectedDay.year(), M: selectedDay.month(), d: selectedDay.date() } })
+                            // salle.bookings.push({ date: { y: selectedDay.year(), M: selectedDay.month(), d: selectedDay.date() } })
+                            addBooking()
 
                             setOpen(false)
+
                         }}>Confirmer</Button>
                     </Stack>
                 </DialogContent>

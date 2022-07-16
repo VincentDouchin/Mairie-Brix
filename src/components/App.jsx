@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Event } from '@mui/icons-material';
 import { useNavigate } from '@tanstack/react-location'
 import { Container, Button, Typography, Toolbar, Box, AppBar, Card, Stack, CardActionArea, CardMedia, Collapse, CardContent, } from '@mui/material';
-import salles from './salles'
+import salles from '../salles'
 function App() {
 	const navigate = useNavigate()
 
