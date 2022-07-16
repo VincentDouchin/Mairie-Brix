@@ -16,6 +16,9 @@
     "@mui/x-date-pickers": "^5.0.0-beta.0",
     "@tanstack/react-location": "^3.7.4",
     "dayjs": "^1.11.3",
+    "firebase": "^9.9.0",
+    "firebaseui": "^6.0.1",
+    "googleapis": "^105.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },

@@ -1,6 +1,6 @@
-import App from './App'
-import Room from './Room'
-import FourOfour from './404'
+import App from './components/App'
+import Room from './components/Room'
+import FourOfour from './components/404'
 const routes = [
     {
         path: '/Mairie-Brix/',
