@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { startUi, deleteUi } from '../auth'
+import { startUi, deleteUi } from '../firebase/auth'
 export default function Login() {
     useEffect(() => {
         startUi()

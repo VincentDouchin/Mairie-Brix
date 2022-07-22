@@ -1,12 +1,15 @@
 
 import { Button, Typography, Toolbar, Modal, AppBar, IconButton, Box, Dialog, Popover } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { Home } from '@mui/icons-material';
+import { Home, Settings } from '@mui/icons-material';
 import { useNavigate } from '@tanstack/react-location'
 import { styled } from '@mui/material/styles';
-import { auth } from '../auth'
+import { auth } from '../firebase/auth'
+import { checkIfAdmin } from '../firebase/firestore'
 import Login from './Login';
+
 export default function Header() {
+
     const navigate = useNavigate()
     const HomeStyled = styled(Home)(({ theme }) => {
         return {
@@ -15,9 +18,14 @@ export default function Header() {
     })
     const [loginModal, setloginModal] = useState(false)
     const [currentUser, setCurrentUser] = useState(undefined)
-    auth.onAuthStateChanged((user) => {
-        if (user && !currentUser) setCurrentUser(user)
+    auth.onAuthStateChanged(async (user) => {
+        if (user && !currentUser) {
+            setCurrentUser(user)
+
+            setIsAdmin(await checkIfAdmin(user.uid))
+        }
     })
+    const [isAdmin, setIsAdmin] = useState(false)
     const [logout, setLogout] = useState(null)
     const open = Boolean(logout)
     const id = open ? 'simple-popover' : undefined;
@@ -32,6 +40,11 @@ export default function Header() {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Mairie de Brix - Location de salle
                 </Typography>
+                {
+                    isAdmin && <IconButton aria-label="settings" color="inherit" onClick={() => navigate({ to: '/Mairie-Brix/Parametres' })}>
+                        <Settings />
+                    </IconButton>
+                }
                 {
                     currentUser
                         ? <Button color="inherit" onClick={(e) => setLogout(e.target)}>{currentUser?.displayName ?? currentUser.email}</Button>
@@ -51,7 +64,7 @@ export default function Header() {
                     horizontal: 0,
                 }}
             >
-                <Button onClick={() => { auth.signOut(); setCurrentUser(null); setLogout(false) }}>Deconnexion</Button>
+                <Button onClick={() => { auth.signOut(); setCurrentUser(null); setLogout(null) }}>Deconnexion</Button>
             </Popover>
             <Dialog
                 open={loginModal}
